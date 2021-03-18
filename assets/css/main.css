@@ -71,7 +71,11 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
-
+.menus{
+	font-size: 10px;
+	user-select: none;
+	cursor: pointer;
+}
 /* Basic */
 
 	@-ms-viewport {

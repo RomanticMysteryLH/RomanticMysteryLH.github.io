@@ -7,12 +7,13 @@
 <html>
 
 <head>
-	<title>Dimension by HTML5 UP</title>
+	<title>Romantic Mystery LH 's Blog</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.bootcss.com/marked/0.8.1/marked.min.js"></script>
 </head>
 
 <body class="is-preload">
@@ -40,7 +41,7 @@
 				<ul>
 					<li><a href="#intro">Intro</a></li>
 					<li><a href="#work">Works</a></li>
-					<li><a href="#about">About</a></li>
+					<li><a href="#about" id="articles">Articles</a></li><!--用articel替换about-->
 					<li><a href="#contact">Contact</a></li>
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
@@ -79,17 +80,35 @@
 				一切从这展开...</p>
 				<span class="image main" style="width: 70%;"><img src="images/2018_0716_05143100_polarr.jpg" alt="" /><p class="image-foot">FuJian ZhangZhou</p></span>
 				<span class="image main"><img src="images/2018_0715_20261600_polarr.jpg" alt="" /><p class="image-foot">FuJian ZhangZhou</p></span>
+				<span class="image main" style="width: 70%;"><img src="images/DSCF2022.jpg" alt="" /><p class="image-foot">FuJian ZhangZhou</p></span>
+				<span class="image main" ><img src="images/2018_0830_08171700-01-02-01_polarr.jpg" alt="" /><p class="image-foot">FuJian LongYan</p></span>
+				<span class="image main" ><img src="images/2018_0923_12470300_polarr.jpg" alt="" /><p class="image-foot">FuJian LongYan</p></span>
+				<span class="image main" ><img src="images/2018_1122_13440800_polarr.jpg" alt="" /><p class="image-foot">FuJian LongYan</p></span>
+				<span class="image main" ><img src="images/000132050006.jpg" alt="" /><p class="image-foot">135 film: HeNan KaiFeng</p></span>
+				<span class="image main" ><img src="images/000132050019.jpg" alt="" /><p class="image-foot">135 film: HeNan KaiFeng</p></span>
+				<span class="image main" ><img src="images/000132060008.jpg" alt="" /><p class="image-foot">135 film: HeNan KaiFeng</p></span>
+				<span class="image main" ><img src="images/000132060019.jpg" alt="" /><p class="image-foot">135 film: HeNan KaiFeng</p></span>
+				<span class="image main" ><img src="images/000132060022.jpg" alt="" /><p class="image-foot">135 film: HeNan KaiFeng</p></span>
+				<p><strong>More Works: </strong></p>
+				<p><a href="https://www.instagram.com/romantic_mystery_lh/" class="icon brands fa-instagram"> romantic_mystery_lh's Instagram</a></p> 
+				<p><a href="https://500px.com.cn/community/user-details/64f13e6c8454098dbb08550dcde328752" class="icon brands fa-500px"> 500px</a></p> 
 			</article>
 
 			<!-- About -->
 			<article id="about">
-				<h2 class="major">About</h2>
+				<h2 class="major">Articles</h2>
+				<h3>文章</h3>
 				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-				<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at
-					eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula
-					lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada
-					fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum
-					dolor sit amet.</p>
+				<div id="menu">
+					<h2>目录</h2>
+					<p class="menus"><a>hadoop配置遇坑</a></p>
+					<p class="menus"><a>idea maven hadoop遇坑</a></p>
+					<p class="menus"><a>linux遇坑</a></p>
+					<p class="menus"><a>SSH配置遇坑</a></p>
+					<p class="menus"><a>Java学习出现问题及总结</a></p>
+				</div>
+				<hr />
+				<div id="mdContent"></div>
 			</article>
 
 			<!-- Contact -->
@@ -376,7 +395,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- Footer -->
 		<footer id="footer">
+			<p class="copyright">LANH 2021</p>
 			<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			
 		</footer>
 
 	</div>
