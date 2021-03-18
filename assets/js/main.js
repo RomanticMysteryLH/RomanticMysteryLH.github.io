@@ -32,20 +32,40 @@
 			$body.removeClass('is-preload');
 		}, 100);
 	});
-	$menus.on('click',function(){
-		console.log(this.firstElementChild.innerHTML);
-		ajaxThis=this.firstElementChild.innerHTML;
-		$.ajax({
-			type: "get",
-			url: "./markdown/"+ajaxThis+".md",
-			dataType: "html",
-			success: function (res) {
-				//console.log(res)
-				$("#mdContent").empty();
-				$("#mdContent").append(marked(res));
-			}
-		})
+	$articles.on('click',function(){
+		
 	})
+	$.ajax({
+		type: "get",
+		url: "./markdown/menu.txt",
+		dataType: "html",
+		success: function (res) {
+			// console.log(res)
+			$("#menu").empty();
+			var menu_ary=res.split('||');
+			// console.log(menu_ary);
+			$("#menu").append('<h2>目录</h2>');
+			for(i in menu_ary){
+				$("#menu").append('<p class="menus"><a>'+menu_ary[i]+'</p></a>');
+			}
+			console.log($(".menus"))
+			$(".menus").on('click',function(){//节点用ajax获取后再注册事件
+				console.log(this.firstElementChild.innerHTML);
+				ajaxThis=this.firstElementChild.innerHTML;
+				$.ajax({
+					type: "get",
+					url: "./markdown/"+ajaxThis+".md",
+					dataType: "html",
+					success: function (res) {
+						//console.log(res)
+						$("#mdContent").empty();
+						$("#mdContent").append(marked(res));
+					}
+				})
+			})
+		}
+	})
+
 	// Fix: Flexbox min-height bug on IE.
 	if (browser.name == 'ie') {
 
