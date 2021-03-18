@@ -32,18 +32,6 @@
 			$body.removeClass('is-preload');
 		}, 100);
 	});
-	$articles.on('click', function () {
-		console.log('article');
-		var value =
-			"./markdown";
-		var fso = new ActiveXObject("Scripting.FileSystemObject");
-		var f = fso.GetFolder(value);
-		var fc = new Enumerator(f.files);
-		var s = "";
-		for (; !fc.atEnd(); fc.moveNext()) {
-			console.log(fc.item())
-		}
-	})
 	$menus.on('click',function(){
 		console.log(this.firstElementChild.innerHTML);
 		ajaxThis=this.firstElementChild.innerHTML;
