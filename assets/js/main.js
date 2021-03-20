@@ -13,7 +13,6 @@
 		$footer = $('#footer'),
 		$main = $('#main'),
 		$main_articles = $main.children('article');
-		$articles = $('#articles'),
 		$menus=$('.menus')
 
 		// Breakpoints.
@@ -30,10 +29,28 @@
 	$window.on('load', function () {
 		window.setTimeout(function () {
 			$body.removeClass('is-preload');
+			console.log($('#work'))
+			console.log($('#work').prop("class"))//延迟获取才能取到
+			if($('#work').prop("class").indexOf('active')>=0){
+				worksShow();//如果正在
+			}
+			if($('#about').prop("class").indexOf('active')>=0){
+				articlesShow();
+			}
 		}, 100);
 	});
-	$articles.on('click',function(){
-		
+	$('#worksButton').on('click',worksShow=function(){
+		$workPic=$('#work img');
+		for(i in $workPic){
+			$workPic[i].src=$workPic[i].getAttribute('origin-data');
+		}
+	})
+	$('#articlesButton').on('click',articlesShow=function(){
+		$articlePic=$('#about img');
+		console.log($articlePic)
+		for(i in $articlePic){
+			$articlePic[i].src=$articlePic[i].getAttribute('origin-data');
+		}
 	})
 	$.ajax({
 		type: "get",
@@ -48,7 +65,7 @@
 			for(i in menu_ary){
 				$("#menu").append('<p class="menus"><a>'+menu_ary[i]+'</p></a>');
 			}
-			console.log($(".menus"))
+			//console.log($(".menus"))
 			$(".menus").on('click',function(){//节点用ajax获取后再注册事件
 				console.log(this.firstElementChild.innerHTML);
 				ajaxThis=this.firstElementChild.innerHTML;
@@ -432,6 +449,6 @@
 		$window.on('load', function () {
 			$main._show(location.hash.substr(1), true);
 		});
-
+	
 
 })(jQuery);
