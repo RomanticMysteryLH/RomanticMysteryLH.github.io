@@ -173,7 +173,10 @@ input, select, textarea {
 	em, i {
 		font-style: italic;
 	}
-
+	#mdContent img{
+		width: 100%;
+		/* 避免markdown图片超出边界 */
+	}
 	p {
 		margin: 0 0 0.8rem 0;
 		letter-spacing: 0.1rem;
