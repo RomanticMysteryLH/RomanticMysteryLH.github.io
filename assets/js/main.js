@@ -49,7 +49,7 @@
 		$articlePic=$('#about img');
 		console.log($articlePic)
 		for(i in $articlePic){
-			$articlePic[i].src=$articlePic[i].getAttribute('origin-data');
+			$articlePic[0].src=$articlePic[i].getAttribute('origin-data');
 		}
 	})
 	$.ajax({
