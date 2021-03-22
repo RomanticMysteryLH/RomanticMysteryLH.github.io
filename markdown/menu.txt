@@ -1,1 +1,1 @@
-hadoop配置遇坑||idea maven hadoop mapreduce实践||Java学习出现问题及总结||linux遇坑||SSH配置遇坑
+博客搭建流程及技术分享||hadoop配置遇坑||idea maven hadoop mapreduce实践||Java学习出现问题及总结||linux遇坑||SSH配置遇坑
