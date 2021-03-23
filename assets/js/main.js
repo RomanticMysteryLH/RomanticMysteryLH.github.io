@@ -14,6 +14,10 @@
 		$main = $('#main'),
 		$main_articles = $main.children('article');
 		$menus=$('.menus')
+		$likeNum=$('#likeNum');
+		$likeButton=$('#likeButton');
+		
+	var ShowLikeNum=0;//显示的点赞数
 
 		// Breakpoints.
 		breakpoints({
@@ -38,6 +42,25 @@
 				articlesShow();
 			}
 		}, 100);
+
+
+		$.ajax({
+			type: "get",
+			url: "./api/getLikes",
+			dataType: "json",
+			success: function (res) {
+				//console.log(res)
+				console.log(res[0].likesNum);
+				likeNum=res[0].likesNum;
+				ShowLikeNum=likeNum;
+				$likeNum[0].innerHTML=likeNum;
+			},
+			error:function(errorThrown){
+				console.log("error message:"+errorThrown.roString);
+			}
+		})
+
+
 	});
 	$('#worksButton').on('click',worksShow=function(){
 		$workPic=$('#work img');
@@ -49,7 +72,7 @@
 		$articlePic=$('#about img');
 		console.log($articlePic)
 		for(i in $articlePic){
-			$articlePic[0].src=$articlePic[i].getAttribute('origin-data');
+			$articlePic[i].src=$articlePic[i].getAttribute('origin-data');
 		}
 	})
 	$.ajax({
@@ -82,7 +105,29 @@
 			})
 		}
 	})
-
+	$likeButton.on('click',function(){
+		// console.log("buttonClick")
+		ShowLikeNum++;
+		// console.log(likeNum);
+		// console.log($likeNum)
+		$likeNum[0].innerHTML=ShowLikeNum;
+		$.ajax({
+			type: "get",
+			url: "./api/getLikes",
+			dataType: "json",
+			data:{ShowLikeNum},
+			success: function (res) {
+				//console.log(res)
+				console.log(res[0].likesNum);
+				likeNum=res[0].likesNum;
+				ShowLikeNum=likeNum;
+				$likeNum[0].innerHTML=likeNum;
+			},
+			error:function(errorThrown){
+				console.log("error message:"+errorThrown.roString);
+			}
+		})
+	})
 	// Fix: Flexbox min-height bug on IE.
 	if (browser.name == 'ie') {
 
