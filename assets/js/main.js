@@ -111,22 +111,22 @@
 		// console.log(likeNum);
 		// console.log($likeNum)
 		$likeNum[0].innerHTML=ShowLikeNum;
-		$.ajax({
-			type: "get",
-			url: "./api/getLikes",
-			dataType: "json",
-			data:{ShowLikeNum},
-			success: function (res) {
-				//console.log(res)
-				console.log(res[0].likesNum);
-				likeNum=res[0].likesNum;
-				ShowLikeNum=likeNum;
-				$likeNum[0].innerHTML=likeNum;
-			},
-			error:function(errorThrown){
-				console.log("error message:"+errorThrown.roString);
-			}
-		})
+		// $.ajax({
+		// 	type: "get",
+		// 	url: "./api/getLikes",
+		// 	dataType: "json",
+		// 	data:{ShowLikeNum},
+		// 	success: function (res) {
+		// 		//console.log(res)
+		// 		console.log(res[0].likesNum);
+		// 		likeNum=res[0].likesNum;
+		// 		ShowLikeNum=likeNum;
+		// 		$likeNum[0].innerHTML=likeNum;
+		// 	},
+		// 	error:function(errorThrown){
+		// 		console.log("error message:"+errorThrown.roString);
+		// 	}
+		// })
 	})
 	// Fix: Flexbox min-height bug on IE.
 	if (browser.name == 'ie') {
