@@ -69,10 +69,10 @@
 		}
 	})
 	$('#articlesButton').on('click', articlesShow = function () {
-		$articlePic = $('#about img');
+		$articlePic = $('#about img:first');
 		console.log($articlePic)
 		//只有第一张图片需要获取origin-data
-		$articlePic[0].src = $articlePic[0].getAttribute('origin-data');
+		$articlePic.src = $articlePic.getAttribute('origin-data');
 
 	})
 	$.ajax({
