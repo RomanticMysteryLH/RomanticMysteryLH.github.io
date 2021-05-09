@@ -13,32 +13,32 @@
 		$footer = $('#footer'),
 		$main = $('#main'),
 		$main_articles = $main.children('article');
-		$menus=$('.menus')
-		$likeNum=$('#likeNum');
-		$likeButton=$('#likeButton');
-		
-	var ShowLikeNum=0;//显示的点赞数
+	$menus = $('.menus')
+	$likeNum = $('#likeNum');
+	$likeButton = $('#likeButton');
 
-		// Breakpoints.
-		breakpoints({
-			xlarge: ['1281px', '1680px'],
-			large: ['981px', '1280px'],
-			medium: ['737px', '980px'],
-			small: ['481px', '736px'],
-			xsmall: ['361px', '480px'],
-			xxsmall: [null, '360px']
-		});
+	var ShowLikeNum = 0; //显示的点赞数
+
+	// Breakpoints.
+	breakpoints({
+		xlarge: ['1281px', '1680px'],
+		large: ['981px', '1280px'],
+		medium: ['737px', '980px'],
+		small: ['481px', '736px'],
+		xsmall: ['361px', '480px'],
+		xxsmall: [null, '360px']
+	});
 
 	// Play initial animations on page load.
 	$window.on('load', function () {
 		window.setTimeout(function () {
 			$body.removeClass('is-preload');
 			console.log($('#work'))
-			console.log($('#work').prop("class"))//延迟获取才能取到
-			if($('#work').prop("class").indexOf('active')>=0){
-				worksShow();//如果正在
+			console.log($('#work').prop("class")) //延迟获取才能取到
+			if ($('#work').prop("class").indexOf('active') >= 0) {
+				worksShow(); //如果正在
 			}
-			if($('#about').prop("class").indexOf('active')>=0){
+			if ($('#about').prop("class").indexOf('active') >= 0) {
 				articlesShow();
 			}
 		}, 100);
@@ -51,29 +51,29 @@
 			success: function (res) {
 				//console.log(res)
 				console.log(res[0].likesNum);
-				likeNum=res[0].likesNum;
-				ShowLikeNum=likeNum;
-				$likeNum[0].innerHTML=likeNum;
+				likeNum = res[0].likesNum;
+				ShowLikeNum = likeNum;
+				$likeNum[0].innerHTML = likeNum;
 			},
-			error:function(errorThrown){
-				console.log("error message:"+errorThrown.roString);
+			error: function (errorThrown) {
+				console.log("error message:" + errorThrown.roString);
 			}
 		})
 
 
 	});
-	$('#worksButton').on('click',worksShow=function(){
-		$workPic=$('#work img');
-		for(i in $workPic){
-			$workPic[i].src=$workPic[i].getAttribute('origin-data');
+	$('#worksButton').on('click', worksShow = function () {
+		$workPic = $('#work img');
+		for (i in $workPic) {
+			$workPic[i].src = $workPic[i].getAttribute('origin-data');
 		}
 	})
-	$('#articlesButton').on('click',articlesShow=function(){
-		$articlePic=$('#about img');
+	$('#articlesButton').on('click', articlesShow = function () {
+		$articlePic = $('#about img');
 		console.log($articlePic)
-		for(i in $articlePic){
-			$articlePic[i].src=$articlePic[i].getAttribute('origin-data');
-		}
+		//只有第一张图片需要获取origin-data
+		$articlePic[0].src = $articlePic[i].getAttribute('origin-data');
+
 	})
 	$.ajax({
 		type: "get",
@@ -82,19 +82,19 @@
 		success: function (res) {
 			// console.log(res)
 			$("#menu").empty();
-			var menu_ary=res.split('||');
+			var menu_ary = res.split('||');
 			// console.log(menu_ary);
 			$("#menu").append('<h2>目录</h2>');
-			for(i in menu_ary){
-				$("#menu").append('<p class="menus"><a>'+menu_ary[i]+'</p></a>');
+			for (i in menu_ary) {
+				$("#menu").append('<p class="menus"><a>' + menu_ary[i] + '</p></a>');
 			}
 			//console.log($(".menus"))
-			$(".menus").on('click',function(){//节点用ajax获取后再注册事件
+			$(".menus").on('click', function () { //节点用ajax获取后再注册事件
 				console.log(this.firstElementChild.innerHTML);
-				ajaxThis=this.firstElementChild.innerHTML;
+				ajaxThis = this.firstElementChild.innerHTML;
 				$.ajax({
 					type: "get",
-					url: "./markdown/"+ajaxThis+".md",
+					url: "./markdown/" + ajaxThis + ".md",
 					dataType: "html",
 					success: function (res) {
 						//console.log(res)
@@ -105,28 +105,28 @@
 			})
 		}
 	})
-	$likeButton.on('click',function(){
+	$likeButton.on('click', function () {
 		// console.log("buttonClick")
 		ShowLikeNum++;
 		// console.log(likeNum);
 		// console.log($likeNum)
-		$likeNum[0].innerHTML=ShowLikeNum;
-		// $.ajax({
-		// 	type: "get",
-		// 	url: "./api/getLikes",
-		// 	dataType: "json",
-		// 	data:{ShowLikeNum},
-		// 	success: function (res) {
-		// 		//console.log(res)
-		// 		console.log(res[0].likesNum);
-		// 		likeNum=res[0].likesNum;
-		// 		ShowLikeNum=likeNum;
-		// 		$likeNum[0].innerHTML=likeNum;
-		// 	},
-		// 	error:function(errorThrown){
-		// 		console.log("error message:"+errorThrown.roString);
-		// 	}
-		// })
+		$likeNum[0].innerHTML = ShowLikeNum;
+		$.ajax({
+			type: "get",
+			url: "./api/postLike",
+			dataType: "json",
+			data: ShowLikeNum,
+			success: function (res) {
+				//console.log(res)
+				console.log(res[0].likesNum);
+				// likeNum=res[0].likesNum;
+				// ShowLikeNum=likeNum;
+				// $likeNum[0].innerHTML=likeNum;
+			},
+			error: function (errorThrown) {
+				console.log("error message:" + errorThrown.roString);
+			}
+		})
 	})
 	// Fix: Flexbox min-height bug on IE.
 	if (browser.name == 'ie') {
@@ -494,6 +494,6 @@
 		$window.on('load', function () {
 			$main._show(location.hash.substr(1), true);
 		});
-	
+
 
 })(jQuery);
