@@ -64,7 +64,7 @@
 	});
 	$('#worksButton').on('click', worksShow = function () {
 		$workPic = $('#work img');
-		for (i in $workPic) {
+		for (let i in $workPic) {
 			$workPic[i].src = $workPic[i].getAttribute('origin-data');
 		}
 	})
@@ -72,8 +72,7 @@
 		$articlePic = $('#about img:first');
 		console.log($articlePic)
 		//只有第一张图片需要获取origin-data
-		$articlePic.src = $articlePic.getAttribute('origin-data');
-
+		$articlePic.src = $articlePic.attr('origin-data');
 	})
 	$.ajax({
 		type: "get",
