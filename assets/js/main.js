@@ -111,22 +111,23 @@
 		// console.log(likeNum);
 		// console.log($likeNum)
 		$likeNum[0].innerHTML = ShowLikeNum;
-		$.ajax({
-			type: "get",
-			url: "./api/postLike",
-			dataType: "json",
-			data: ShowLikeNum,
-			success: function (res) {
-				//console.log(res)
-				console.log(res[0].likesNum);
-				// likeNum=res[0].likesNum;
-				// ShowLikeNum=likeNum;
-				// $likeNum[0].innerHTML=likeNum;
-			},
-			error: function (errorThrown) {
-				console.log("error message:" + errorThrown.roString);
-			}
-		})
+		alert('点赞功能还没完成φ(゜▽゜*)♪');
+		// $.ajax({
+		// 	type: "get",
+		// 	url: "./api/postLike",
+		// 	dataType: "json",
+		// 	data: ShowLikeNum,
+		// 	success: function (res) {
+		// 		//console.log(res)
+		// 		console.log(res[0].likesNum);
+		// 		// likeNum=res[0].likesNum;
+		// 		// ShowLikeNum=likeNum;
+		// 		// $likeNum[0].innerHTML=likeNum;
+		// 	},
+		// 	error: function (errorThrown) {
+		// 		console.log("error message:" + errorThrown.roString);
+		// 	}
+		// })
 	})
 	// Fix: Flexbox min-height bug on IE.
 	if (browser.name == 'ie') {
