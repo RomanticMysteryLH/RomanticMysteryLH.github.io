@@ -72,7 +72,8 @@
 		$articlePic = $('#about img:first');
 		console.log($articlePic)
 		//只有第一张图片需要获取origin-data
-		$articlePic.src = $articlePic.attr('origin-data');
+		$articlePic[0].src = $articlePic[0].getAttribute('origin-data');
+
 	})
 	$.ajax({
 		type: "get",
